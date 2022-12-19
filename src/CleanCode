@@ -1,0 +1,220 @@
+1. Переместил инициализацию переменной ближе к коду непосредственного использования
+        ... // много кода
+        int[] orderedListSalaries = new int[n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (ids[i] == listEmployeesIdTemp[j]) {
+                    orderedListSalaries[i] = salTmp[j];
+                    break;
+                }
+            }
+
+2. Завершил работу с переменной после использования в цикле (обнулил аккумулятор)
+        int index = 0;
+
+        for (int i = 0; i < t; i++) {
+            for (int j = 0; j < t; j++) {
+                squareNormal[i][j] = index++;
+
+                if (j == 0) {
+                    squareEx[i][j] = 6 - i;
+                }
+                if (j == 1) {
+                    squareEx[i][j] = 1 + i;
+                }
+                if (j == 2) {
+                    squareEx[i][j] = 9 - i;
+                }
+            }
+        }
+        index = 0;
+
+        int[] hitsNormal = new int[n];
+        while (index < n) {
+
+            for (int i = 0; i < t; i++) {
+                for (int j = 0; j < t; j++) {
+                    if (hits[index] == squareEx[i][j]) {
+                        hitsNormal[index] = squareNormal[i][j];
+                        break;
+                    }
+                }
+            }
+
+            index++;
+        }
+        index = 0;
+
+3. Завершил работу с переменной после использования в цикле
+        int count = 0;
+
+        while (count < n) {
+            // branch growth
+            ... // много кода
+            for (int i = 0; i < h; i ++) {
+                for (int j = 0; j < w; j++) {
+                    if (cutTreeBranches[i][j] != 0) {
+                        cutTreeBranches[i][j] = 0;
+                        treeNum[i][j] = 0;
+                    }
+                }
+            }
+
+            count++;
+        }
+        count = 0;
+
+4. Переместил инициализацию переменной ближе к коду непосредственного использования
+      int index = command.indexOf(" ") + 1;
+        String com = command.substring(index);
+
+        int strLen = strBld.length();
+
+        ma[i] = strBld.toString();
+
+        int strNum = 0;
+        int n = Character.getNumericValue(command.charAt(0));
+
+        if (n == 2 || n == 3) {
+            strNum = Integer.parseInt(com);
+        }
+
+        if (reset && (n == 1 || n == 2)) {
+            resetClipboard();
+        }
+
+        switch (n) {
+            ... // много кода
+        }
+
+        return strBld.toString();
+
+5. Завершил работу с переменной после использования в цикле
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            if (num[i] == -1) continue;
+
+            for (int j = i + 1; j < n; j++) {
+                if (str[i].equals(str[j])) {
+                    num[i] = num[i] + num[j];
+
+                    num[j] = -1;
+                    str[j] = "";
+                }
+            }
+
+            count++;
+        }
+
+        String[] topSellingItems = new String[count];
+        count = 0;
+
+6. Завершил работу с переменной
+        String[] str = new String[n];
+        int[] num = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            int ind = items[i].indexOf(" ");
+
+            str[i] = items[i].substring(0, ind);
+
+            String t = items[i].substring(ind + 1);
+            num[i] = Integer.parseInt(t);
+        }
+
+        for (int i = 0; i < str.length; i++) {
+            for (int j = i + 1; j < str.length; j++) {
+            ... // много кода
+            if (i < topSellingItems.length) {
+                topSellingItems[i] = str[i] + " " + num[i];
+            }
+        }
+
+        str = null;
+
+7. Завершил работу с переменной
+        if (n < 3) return 0;
+
+        int[] sortedPrice = new int[n];
+
+        System.arraycopy(price, 0, sortedPrice, 0, price.length);
+
+        ... // много кода
+
+        for (int i = 2; i < n; i += 3) {
+            discount += sortedPrice[i];
+        }
+        sortedPrice = null;
+
+        return discount;
+
+8. Переместил инициализацию переменной ближе к коду непосредственного использования
+        int count = time;
+        int trafficLightColor = 0;
+
+        int sum = red + green;
+        if (time > sum) {
+            count = time % sum;
+        }
+
+        if (count < red) {
+            trafficLightColor = red - count;
+        }
+
+        return trafficLightColor;
+
+9. Завершил работу с переменными
+        int[] arrayInteger1 = new int[MAX_LENGTH];
+        int[] arrayInteger2 = new int[MAX_LENGTH];
+
+        int[] smallerNumber = new int[MAX_LENGTH];
+        int[] biggerNumber = new int[MAX_LENGTH];
+
+        ... // много кода
+
+        int x = S1_LENGTH - 1;
+        while (S1_LENGTH == S2_LENGTH) {
+            ... // много кода
+        }
+
+        arrayInteger1 = null;
+        arrayInteger2 = null;
+
+        for (int i = 0; i < MAX_LENGTH; i++) {
+            if (biggerNumber[i] < smallerNumber[i]) {
+                biggerNumber[i] += 10;
+                biggerNumber[i + 1]--;
+            }
+
+            biggerNumber[i] -= smallerNumber[i];
+        }
+        smallerNumber = null;
+
+        int y = 0;
+        while (biggerNumber[MAX_LENGTH - 1 - y] == 0) {
+            y++;
+        }
+
+        StringBuilder bld = new StringBuilder();
+        for (int i = MAX_LENGTH - 1 - y; i >= 0; i--) {
+            bld.append(biggerNumber[i]);
+        }
+        biggerNumber = null;
+
+        return bld.toString();
+
+10. Завершил работу с переменной
+        String[] asciiTable = ASCII_TABLE.split("\\s+");
+        asciiTable[0] = " ";
+
+        int[] decCode = new int[asciiTable.length / 2];
+        char[] tableChar = new char[asciiTable.length / 2];
+
+        for (int i = 0; i < asciiTable.length; i++) {
+            if (i % 2 == 0) {
+                tableChar[i / 2] = asciiTable[i].charAt(0);
+            } else {
+                decCode[i / 2] = Integer.parseInt(asciiTable[i]);
+            }
+        }
+        asciiTable = null;
