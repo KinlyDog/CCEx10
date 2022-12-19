@@ -218,3 +218,23 @@
             }
         }
         asciiTable = null;
+
+11. Завершил работу с переменной после использования в цикле
+ int count = 0;
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                // --- encode ---
+                if (count < STRING_LENGTH && encode) {
+                    matrixRabbitDecoder[i][j] = str.charAt(count);
+                    count++;
+                    continue;
+
+                ... // много кода
+
+                } else {
+                    count++;
+                    j--;
+                }
+            }
+        }
+        count = 0;
