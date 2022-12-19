@@ -238,3 +238,57 @@
             }
         }
         count = 0;
+
+12. Завершил работу с переменной
+        String str = bld.toString();
+
+        final int LIMITED_ROWS_LENGTH = str.length() / (len / 2) + 1;
+        String[] limitedRows = new String[LIMITED_ROWS_LENGTH]; // ?
+
+        int stringNumber = 0;
+        while (str.length() != 0) {
+            ... // много кода
+        }
+
+        str = "ERROR";
+
+13. Переместил инициализацию переменной ближе к коду непосредственного использования
+        final double HYPOTENUSE = Math.sqrt(2);
+        double unlockLineLength = 0;
+        for (int i = 0; i < n - 1; i++) {
+            if ((hitsNormal[i] + hitsNormal[i + 1]) % 2 == 0) {
+                unlockLineLength += HYPOTENUSE;
+            } else {
+                unlockLineLength += 1;
+            }
+        }
+
+14. Завершил работу с переменными
+        int[][] squareEx = new int[t][t];
+        int[][] squareNormal = new int[t][t];
+        int index = 0;
+
+        for (int i = 0; i < SQUARE_SIDE; i++) {
+            for (int j = 0; j < SQUARE_SIDE; j++) {
+                ... // много кода
+            }
+        }
+        index = 0;
+
+        int[] hitsNormal = new int[n];
+        while (index < n) {
+
+            for (int i = 0; i < t; i++) {
+                for (int j = 0; j < t; j++) {
+                    if (hits[index] == squareEx[i][j]) {
+                        hitsNormal[index] = squareNormal[i][j];
+                        break;
+                    }
+                }
+            }
+
+            index++;
+        }
+        index = 0;
+        squareNormal = null;
+        squareEx = null;
